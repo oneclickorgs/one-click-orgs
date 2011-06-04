@@ -52,16 +52,7 @@
                 = form_tag(vote_for_path(:id => co.found_organisation_proposals.last.id, :return_to => request.url)) do
                   = submit_tag "Support"
                 %br.clear
-
-      %div.control_bar
-        - if current_user
-          %p
-            %strong
-              = link_to current_user.name, member_path(current_user)
-          %p
-            = link_to 'Edit your account', edit_member_path(current_user)
-          %p
-            = link_to 'Logout', '/logout'
+      = render(:partial => 'shared/control_bar')
       %div#doc
         %div#hd
           %h1.header

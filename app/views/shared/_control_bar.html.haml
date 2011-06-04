@@ -1,0 +1,10 @@
+%div.control_bar
+  - if current_user
+    - if current_user.inducted_at
+      %p
+        %strong
+          = link_to current_user.name, member_path(current_user)
+      %p
+        = link_to 'Edit your account', edit_member_path(current_user)
+    %p
+      = link_to 'Logout', '/logout'

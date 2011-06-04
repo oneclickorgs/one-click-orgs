@@ -17,9 +17,19 @@ describe "layouts/application.html.haml" do
       view.stub!(:current_organisation).and_return(@organisation)
       view.stub!(:co).and_return(@organisation)
       
-      view.stub!(:current_user).and_return(@user = mock_model(Member, :name => "Lucy Baker"))
+      view.stub!(:current_user).and_return(@user = mock_model(Member, 
+                                                              :name => "Lucy Baker",
+                                                              :inducted_at => 2.days.ago
+                                                             ))
     end
     
+
+    it "should show a link to let users log out" do
+          render
+          rendered.should have_selector('a[href="/logout"]')
+    end
+
+
     context "when organisation is pending" do
       before(:each) do
         @organisation.stub!(:pending?).and_return(true)
