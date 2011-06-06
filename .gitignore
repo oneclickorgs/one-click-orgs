@@ -3,6 +3,7 @@
 ._*
 .rvmrc
 .*.swp
+.yardoc
 config/database.yml
 config/initializers/local_settings.rb
 coverage/*
