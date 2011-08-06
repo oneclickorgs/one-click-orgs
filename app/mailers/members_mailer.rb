@@ -43,4 +43,28 @@ class MembersMailer < OcoMailer
 
     create_mail(@organisation_name, @member.email, "Your password for #{@organisation_name} on One Click Orgs")
   end
+  
+  def new_director_notification(member, director)
+    default_url_options[:host] = member.organisation.domain(:only_host => true)
+
+    @member = member
+    @director = director
+    raise ArgumentError, "No member provided" unless @member
+    @organisation = member.organisation
+    @organisation_name = member.organisation.name
+
+    create_mail(@organisation_name, @member.email, "Notification from #{@organisation_name} on One Click Orgs")
+  end
+  
+  # TODO Implement @ directors_controller.rb -> destroy
+  #def director_leaves_notification(member, director)
+  #  default_url_options[:host] = member.organisation.domain(:only_host => true)
+
+  #  @member = member
+  #  raise ArgumentError, "No member provided" unless @member
+  #  @organisation = member.organisation
+  #  @organisation_name = member.organisation.name
+
+  #  create_mail(@organisation_name, @member.email, "Notification from #{@organisation_name} on One Click Orgs")
+  #end
 end

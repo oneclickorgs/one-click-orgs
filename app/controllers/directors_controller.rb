@@ -1,7 +1,9 @@
 class DirectorsController < ApplicationController
   def create
     @director = co.build_director(params[:director])
-    @director.save
+    if @director.save
+			@director.send_new_director_notifications
+		end
     redirect_to members_path
   end
 end

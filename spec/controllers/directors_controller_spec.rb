@@ -14,6 +14,7 @@ describe DirectorsController do
     before(:each) do
       @director_parameters = double("director parameters")
       @director = mock_model(Director, :save => true).as_new_record
+      @director.stub(:send_new_director_notifications)
       @company.stub(:build_director).and_return(@director)
     end
     
@@ -28,6 +29,11 @@ describe DirectorsController do
     
     it "saves the new director" do
       @director.should_receive(:save).and_return(true)
+      post_create
+    end
+    
+    it "sends notification emails to all directors" do
+			@director.should_receive(:send_new_director_notifications)
       post_create
     end
     
