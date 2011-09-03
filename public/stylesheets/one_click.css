@@ -41,17 +41,6 @@ body {
 div.clear {
   clear: left; }
 
-/* Browser warning */
-#browser_warning {
-  background-color: #f6f5d1;
-  border: 1px solid #a2005a;
-  font-size: 0.9em;
-  margin: 0 0 1em 0;
-  padding: 0.4em 2em;
-  text-align: center; }
-  #browser_warning p {
-    margin: 0.4em; }
-
 /* Induction */
 #overlay {
   -webkit-border-bottom-right-radius: 8px;
