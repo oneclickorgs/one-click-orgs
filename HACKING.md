@@ -51,7 +51,7 @@ Now, install required gems:
 
 3.  Create your local config files:
 
-        $ rake oco:generate_config
+        $ bundle exec rake oco:generate_config
 
 4.  Set up your database connection settings, by editing config/database.yml as desired.
 
@@ -64,7 +64,7 @@ Now, install required gems:
 
 5.  (Create and) migrate the database:
 
-        $ rake db:setup
+        $ bundle exec rake db:setup
 
 ## Running
 
@@ -74,10 +74,10 @@ Now, install required gems:
 
 2.  (Optional) In another shell, start the job server (which sends emails and closes proposals):
 
-        $ script/delayed_job run    # run in foreground
-        $ script/delayed_job start  # start as daemon (check log/delayed_job.log)
-        $ rake jobs:work            # foreground, from rake
-        $ rake jobs:clear           # clear queue
+        $ script/delayed_job run                # run in foreground
+        $ script/delayed_job start              # start as daemon (check log/delayed_job.log)
+        $ bundle exec rake jobs:work            # foreground, from rake
+        $ bundle exec rake jobs:clear           # clear queue
 
 3.  Visit `http://localhost:3000/`.
 
@@ -91,14 +91,14 @@ the founding steps manually.
 
 To do this, run the `oco:dev:create_association` rake task:
 
-  $ rake oco:dev:create_association
+  $ bundle exec rake oco:dev:create_association
 
 ## Updating
 
 When you pull updates from the repository, you may need to update your gem bundle (if `Gemfile.lock` has changed) and/or migrate your database (if `db/migrate` has changed):
 
     $ bundle install
-    $ rake db:migrate
+    $ bundle exec rake db:migrate
 
 These commands will safely no-op if no changes are necessary.
 
@@ -106,8 +106,8 @@ These commands will safely no-op if no changes are necessary.
 
 Before you submit any patches make sure that no tests fail:
 
-      $ rake spec
-      $ rake cucumber
+      $ bundle exec rake spec
+      $ bundle exec rake cucumber
 
 To submit a patch, you have several options:
 
