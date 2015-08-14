@@ -1,5 +1,7 @@
 # One Click Orgs
 
+[![Join the chat at https://gitter.im/oneclickorgs/one-click-orgs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oneclickorgs/one-click-orgs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 One Click Orgs is a website where groups can quickly create a legal structure and get a simple system for group decisions. We think social enterprises, collectives and activist groups have better things to think about than obscure legal clauses.
 
 The One Click Orgs platform gives you:
