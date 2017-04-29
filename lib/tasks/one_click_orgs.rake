@@ -38,14 +38,14 @@ namespace :oco do
   
   desc "Install wkhtmltopdf static binary for Linux"
   task :install_wkhtmltopdf do
-    BASE_URL = "http://wkhtmltopdf.googlecode.com/files/"
-    ARCHIVE_NAME = "wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"
+    BASE_URL = "https://downloads.wkhtmltopdf.org/0.12/0.12.4/"
+    ARCHIVE_NAME = "wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
     `wget #{BASE_URL}#{ARCHIVE_NAME}`
     `tar -xvjf #{ARCHIVE_NAME}`
     `mkdir -p vendor/bin`
-    `mv wkhtmltopdf-amd64 vendor/bin`
+    `mv wkhtmltox/bin/wkhtmltopdf vendor/bin`
     File.open(config_dir('initializers', 'local_settings.rb'), 'a') do |file|
-      file.puts "PDFKit.configuration.wkhtmltopdf = '#{File.expand_path('../../../vendor/bin/wkhtmltopdf-amd64', __FILE__)}'"
+      file.puts "PDFKit.configuration.wkhtmltopdf = '#{File.expand_path('../../../vendor/bin/wkhtmltopdf', __FILE__)}'"
     end
   end
   
