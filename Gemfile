@@ -77,9 +77,7 @@ group :development do
 end
 
 group :development, :test do
-  # rspec-rails 3.4 introduces changes to the path resolver which are
-  # incompatible with our path resolver test hooks.
-  gem "rspec-rails", "~>3.3", "<3.4"
+  gem "rspec-rails"
   gem 'rspec-activemodel-mocks'
   gem "webrat"
   gem "machinist", :git => "git://github.com/chrismear/machinist.git", :branch => "make_on_has_many"

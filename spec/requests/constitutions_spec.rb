@@ -57,7 +57,7 @@ describe "constitutions" do
       
       it "renders a form to update the constitution" do
         expect(page).to have_selector("form[action='/constitution']") do |form|
-          expect(form).to have_selector("input[name='_method'][value='put']")
+          expect(form).to have_selector("input[name='_method'][value='put']", visible: false)
         end
       end
       

@@ -75,7 +75,7 @@ describe "members" do
       
       it "should display a form to eject the member" do
         expect(page).to have_selector("form[action='/eject_member_proposals']") do |form|
-          expect(form).to have_selector "input[name='eject_member_proposal[member_id]'][value='#{@member.id}']"
+          expect(form).to have_selector "input[name='eject_member_proposal[member_id]'][value='#{@member.id}']", visible: false
         end
       end
     end

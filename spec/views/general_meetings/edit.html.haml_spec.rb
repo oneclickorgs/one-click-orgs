@@ -29,7 +29,7 @@ describe 'general_meetings/edit' do
 
   it "renders a minutes field for each of the agenda items" do
     render
-    expect(rendered).to have_selector("input[name='general_meeting[agenda_items_attributes][0][id]'][value='4000']")
+    expect(rendered).to have_selector("input[name='general_meeting[agenda_items_attributes][0][id]'][value='4000']", visible: false)
     expect(rendered).to have_selector("label[for='general_meeting_agenda_items_attributes_0_minutes']", text: 'Apologies for Absence')
     expect(rendered).to have_selector("textarea[name='general_meeting[agenda_items_attributes][0][minutes]']")
   end
@@ -59,10 +59,10 @@ describe 'general_meetings/edit' do
     render
 
     expect(rendered).to have_selector("input[name='general_meeting[passed_resolutions_attributes][0][passed]'][value='1']")
-    expect(rendered).to have_selector("input[type='hidden'][name='general_meeting[passed_resolutions_attributes][0][id]'][value='3000']")
+    expect(rendered).to have_selector("input[type='hidden'][name='general_meeting[passed_resolutions_attributes][0][id]'][value='3000']", visible: false)
 
     expect(rendered).to have_selector("input[name='general_meeting[passed_resolutions_attributes][1][passed]'][value='1']")
-    expect(rendered).to have_selector("input[type='hidden'][name='general_meeting[passed_resolutions_attributes][1][id]'][value='3001']")
+    expect(rendered).to have_selector("input[type='hidden'][name='general_meeting[passed_resolutions_attributes][1][id]'][value='3001']", visible: false)
   end
 
   it "renders vote count text fields for each attached resolution that was open for electronic voting" do

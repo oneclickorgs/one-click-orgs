@@ -56,7 +56,7 @@ describe "general_meetings/new" do
 
   it "renders a hidden field with the ID of each draft resolution" do
     render
-    expect(rendered).to have_selector("input[name='general_meeting[existing_resolutions_attributes][0][id]'][value='111'][type='hidden']")
+    expect(rendered).to have_selector("input[name='general_meeting[existing_resolutions_attributes][0][id]'][value='111'][type='hidden']", visible: false)
   end
 
 end

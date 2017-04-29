@@ -22,7 +22,7 @@ describe "invitations" do
     it "renders a form to update the invitation" do
       get_edit
       expect(page).to have_selector("form[action='/invitations/#{@member.invitation_code}']") do |form|
-        expect(form).to have_selector("input[name='_method'][value='put']")
+        expect(form).to have_selector("input[name='_method'][value='put']", visible: false)
       end
     end
     
@@ -35,12 +35,12 @@ describe "invitations" do
     describe "rendering a hidden terms and conditions field" do
       it "renders a hidden terms and conditions field" do
         get_edit
-        expect(page).to have_selector("input[name='invitation[terms_and_conditions]'][type='hidden']")
+        expect(page).to have_selector("input[name='invitation[terms_and_conditions]'][type='hidden']", visible: false)
       end
       
       it "sets the value to '0'" do
         get_edit
-        expect(page).to have_selector("input[name='invitation[terms_and_conditions]'][value='0']")
+        expect(page).to have_selector("input[name='invitation[terms_and_conditions]'][value='0']", visible: false)
       end
     end
   end

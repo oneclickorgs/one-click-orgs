@@ -30,7 +30,7 @@ describe 'directorships/external' do
 
   it "renders a hidden field for the director's member_class_id" do
     render
-    expect(rendered).to have_selector("input[name='directorship[director_attributes][member_class_id]'][value='999']")
+    expect(rendered).to have_selector("input[name='directorship[director_attributes][member_class_id]'][value='999']", visible: false)
   end
 
   it "renders a submit button" do

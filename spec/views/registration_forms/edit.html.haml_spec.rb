@@ -49,15 +49,15 @@ describe "registration_forms/edit.html.haml" do
 
     expect(rendered).to have_selector("input[type='checkbox'][name='registration_form[reg_form_signatories_attributes][0][selected]']")
     expect(rendered).to have_selector("label[for='registration_form_reg_form_signatories_attributes_0_selected']")
-    expect(rendered).to have_selector("input[type='hidden'][name='registration_form[reg_form_signatories_attributes][0][id]'][value='111']")
+    expect(rendered).to have_selector("input[type='hidden'][name='registration_form[reg_form_signatories_attributes][0][id]'][value='111']", visible: false)
 
     expect(rendered).to have_selector("input[type='checkbox'][name='registration_form[reg_form_signatories_attributes][1][selected]']")
     expect(rendered).to have_selector("label[for='registration_form_reg_form_signatories_attributes_1_selected']")
-    expect(rendered).to have_selector("input[type='hidden'][name='registration_form[reg_form_signatories_attributes][1][id]'][value='222']")
+    expect(rendered).to have_selector("input[type='hidden'][name='registration_form[reg_form_signatories_attributes][1][id]'][value='222']", visible: false)
 
     expect(rendered).to have_selector("input[type='checkbox'][name='registration_form[reg_form_signatories_attributes][2][selected]']")
     expect(rendered).to have_selector("label[for='registration_form_reg_form_signatories_attributes_2_selected']")
-    expect(rendered).to have_selector("input[type='hidden'][name='registration_form[reg_form_signatories_attributes][2][id]'][value='333']")
+    expect(rendered).to have_selector("input[type='hidden'][name='registration_form[reg_form_signatories_attributes][2][id]'][value='333']", visible: false)
   end
 
   it "renders text fields for the main Co-operatives UK contact" do

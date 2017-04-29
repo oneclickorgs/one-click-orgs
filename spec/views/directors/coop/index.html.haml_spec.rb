@@ -77,7 +77,7 @@ describe 'directors/coop/index' do
 
     it "renders an 'Appoint a new Officer' button" do
       render
-      expect(rendered).to have_selector("form[action='/officerships/new'] input[type='hidden'][name='officer_id'][value='4']")
+      expect(rendered).to have_selector("form[action='/officerships/new'] input[type='hidden'][name='officer_id'][value='4']", visible: false)
     end
   end
 
