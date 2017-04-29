@@ -16,13 +16,13 @@ namespace :oco do
       STDOUT.puts "Creating config/database.yml"
       FileUtils.cp config_dir('database.yml.sample'), config_dir('database.yml')
     end
-    
+
     if File.exist? config_dir('initializers', 'local_settings.rb')
       STDOUT.puts "config/initializers/local_settings.rb already exists"
     else
       STDOUT.puts "Creating config/initializers/local_settings.rb"
       FileUtils.cp config_dir('initializers', 'local_settings.rb.sample'), config_dir('initializers', 'local_settings.rb')
-      
+
       code = File.read(config_dir('initializers', 'local_settings.rb'))
       code.sub!('YOUR_SECRET_HERE', SecureRandom.hex(64))
       File.open(config_dir('initializers', 'local_settings.rb'), 'w'){|file| file << code}
@@ -35,7 +35,7 @@ namespace :oco do
       file << `git shortlog -nse`.gsub(/^\s+\d+\s+/, '')
     end
   end
-  
+
   desc "Install wkhtmltopdf static binary for Linux"
   task :install_wkhtmltopdf do
     BASE_URL = "https://downloads.wkhtmltopdf.org/0.12/0.12.4/"
@@ -48,7 +48,7 @@ namespace :oco do
       file.puts "PDFKit.configuration.wkhtmltopdf = '#{File.expand_path('../../../vendor/bin/wkhtmltopdf', __FILE__)}'"
     end
   end
-  
+
   namespace :dev do
     desc "Create an active organisation, for development/testing purposes"
     task :create_organisation => :environment do
@@ -63,31 +63,31 @@ and visit the site in your browser (usually at http://localhost:3000 ).
         EOE
         exit
       end
-      
+
       password = ENV['PASSWORD'] || "password"
-      
+
       require 'spec/support/machinist'
       require 'spec/support/blueprints'
-      
+
       # The blueprints use Sham to generate the same set of fake values in
-      # order each time the tests are run. However, this will cause uniquness 
+      # order each time the tests are run. However, this will cause uniquness
       # validation errors here if this task has already been run before.
       # So, we skip Sham for the necessary attributes.
       organisation = Organisation.make(
         :subdomain => Faker::Internet.domain_word
       )
       organisation.active!
-      
+
       member_class = organisation.member_classes.find_by_name("Member")
       members = organisation.members.make_n(3,
         :member_class => member_class,
         :password => password,
         :password_confirmation => password
       )
-      
+
       # TODO Should we make a passed FoundOrganisationProposal as well,
       # for total authenticity?
-      
+
       STDOUT.puts "Organisation '#{organisation.name}' created:"
       STDOUT.puts "  #{organisation.domain}"
       STDOUT.puts "Log in with:"
