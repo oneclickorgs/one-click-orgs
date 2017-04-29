@@ -32,7 +32,7 @@ module OneClickOrgs
     
   private
     
-    def find_templates(name, prefix, partial, details)
+    def find_templates(name, prefix, partial, details, _)
       prefix_expansions = ["#{prefix}/#{@organisation_class_name}", prefix]
       templates = []
       prefix_expansions.each do |expanded_prefix|
