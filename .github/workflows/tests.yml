@@ -36,7 +36,7 @@ jobs:
         sudo make install
     - name: Install Ruby 1.9.3
       run: |
-        ruby-install --system ruby 1.9.3-p551 -- --with-openssl-dir=$HOME/.rubies/openssl-1.0.2s
+        sudo ruby-install --system ruby 1.9.3-p551 -- --with-openssl-dir=$HOME/.rubies/openssl-1.0.2s
     - name: Install Bundler 1.14.6
       run: gem install -v 1.14.6 bundler
     - name: Install app dependencies
