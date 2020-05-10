@@ -38,7 +38,7 @@ jobs:
       run: |
         sudo ruby-install --system ruby 1.9.3-p551 -- --with-openssl-dir=$HOME/.rubies/openssl-1.0.2s
     - name: Install Bundler 1.14.6
-      run: gem install -v 1.14.6 bundler
+      run: sudo gem install -v 1.14.6 bundler
     - name: Install app dependencies
       run: |
         sudo apt-get -y install git default-libmysqlclient-dev
