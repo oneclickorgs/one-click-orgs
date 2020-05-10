@@ -70,7 +70,6 @@ group :development do
   gem "capistrano", "~>2.14.2"
   gem 'net-ssh', '<3'
   gem "railroad"
-  gem "ruby-debug19", :platforms => :ruby_19
   gem 'byebug', platforms: [:ruby_20, :ruby_21, :ruby_22, :ruby_23]
   gem 'pry'
   gem 'parallel_tests'
