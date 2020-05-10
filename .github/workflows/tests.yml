@@ -1,0 +1,53 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 8080:8080
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install OpenSSL 1.0
+      run: |
+        sudo apt-get -y update
+        sudo apt-get -y install build-essential
+        curl https://www.openssl.org/source/openssl-1.0.2s.tar.gz | tar xz
+        cd openssl-1.0.2s
+        mkdir -p $HOME/.rubies/openssl-1.0.2s
+        ./config --prefix=$HOME/.rubies/openssl-1.0.2s --shared
+        make
+        make install
+    - name: Install ruby-install
+      run: |
+        sudo apt-get -y update
+        sudo apt-get -y install build-essential
+        wget -O ruby-install-0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz
+        tar -xzvf ruby-install-0.7.0.tar.gz
+        cd ruby-install-0.7.0/
+        sudo make install
+    - name: Install Ruby 1.9.3
+      run: |
+        sudo ruby-install --system ruby 1.9.3-p551 -- --with-openssl-dir=$HOME/.rubies/openssl-1.0.2s
+    - name: Install Bundler 1.14.6
+      run: sudo gem install -v 1.14.6 bundler
+    - name: Install app dependencies
+      run: |
+        sudo apt-get -y install git default-libmysqlclient-dev
+        bundle install
+    - name: Configure app
+      run: bundle exec rake oco:generate_config
+    - name: Configure database
+      run: bundle exec rake db:setup
+    - name: Run tests
+      run: |
+        bundle exec rake spec
+        bundle exec rake cucumber
